@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hunaina Shamim — Digital Marketer & Web Developer. Digital marketing, web solutions, SEO, advertising, WordPress, Shopify, and mobile app development.">
+  <meta name="theme-color" content="#0b1220">
+  <title>Hunaina Shamim | Digital Marketer & Web Developer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #f7f9fc;
+      --surface: #ffffff;
+      --surface-2: #eef3f9;
+      --text: #0b1220;
+      --muted: #5d6878;
+      --line: #dce4ee;
+      --primary: #1769e0;
+      --primary-dark: #0d4fad;
+      --navy: #0b1220;
+      --shadow: 0 18px 50px rgba(11, 18, 32, .08);
+      --radius: 22px;
+      --max: 1160px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "DM Sans", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(var(--max), calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    .section { padding: 100px 0; }
+    .section-head { max-width: 700px; margin-bottom: 48px; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--primary);
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 2px;
+      background: var(--primary);
+    }
+    h1, h2, h3, h4 {
+      font-family: "Manrope", sans-serif;
+      line-height: 1.15;
+    }
+    h2 { font-size: clamp(2rem, 4vw, 3.1rem); letter-spacing: -.04em; }
+    .section-head p { margin-top: 16px; color: var(--muted); }
+
+    /* Navigation */
+    .nav-wrap {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 1000;
+      padding: 16px 0;
+      transition: .3s ease;
+    }
+    .nav-wrap.scrolled {
+      background: rgba(255,255,255,.9);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 8px 30px rgba(11,18,32,.06);
+      padding: 10px 0;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 54px;
+    }
+    .logo {
+      font-family: "Manrope", sans-serif;
+      font-weight: 800;
+      font-size: 1.05rem;
+      letter-spacing: -.03em;
+    }
+    .logo span { color: var(--primary); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      list-style: none;
+      font-size: .9rem;
+      font-weight: 600;
+    }
+    .nav-links a { transition: color .2s ease; }
+    .nav-links a:hover { color: var(--primary); }
+    .nav-cta {
+      padding: 11px 18px;
+      border-radius: 999px;
+      background: var(--navy);
+      color: #fff !important;
+    }
+    .menu-btn {
+      display: none;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      font-size: 1.5rem;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 150px 0 90px;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 82% 18%, rgba(23,105,224,.13), transparent 28%),
+        radial-gradient(circle at 12% 80%, rgba(23,105,224,.08), transparent 24%),
+        var(--bg);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 70px;
+      align-items: center;
+    }
+    .hero h1 {
+      font-size: clamp(3rem, 7vw, 5.7rem);
+      letter-spacing: -.065em;
+      max-width: 800px;
+    }
+    .hero h1 span { color: var(--primary); }
+    .hero-subtitle {
+      font-size: clamp(1.1rem, 2vw, 1.3rem);
+      color: var(--muted);
+      max-width: 700px;
+      margin: 24px 0 34px;
+    }
+    .availability {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: #2c6041;
+      font-size: .86rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #37a66b;
+      box-shadow: 0 0 0 5px rgba(55,166,107,.12);
+    }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 9px;
+      padding: 13px 20px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: .9rem;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--primary); color: #fff; box-shadow: 0 10px 25px rgba(23,105,224,.22); }
+    .btn-primary:hover { background: var(--primary-dark); }
+    .btn-dark { background: var(--navy); color: #fff; }
+    .btn-light { background: #fff; border-color: var(--line); }
+    .hero-card {
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(220,228,238,.9);
+      border-radius: 30px;
+      padding: 32px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+      transform: rotate(1.5deg);
+    }
+    .hero-card-inner {
+      background: var(--navy);
+      color: #fff;
+      border-radius: 22px;
+      padding: 30px;
+      min-height: 350px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .mini-label { color: #aeb9ca; font-size: .78rem; text-transform: uppercase; letter-spacing: .12em; font-weight: 700; }
+    .hero-card h3 { font-size: 2rem; margin-top: 10px; }
+    .skill-orbit { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 25px; }
+    .skill-orbit span {
+      padding: 8px 11px;
+      border: 1px solid rgba(255,255,255,.15);
+      background: rgba(255,255,255,.06);
+      border-radius: 999px;
+      font-size: .78rem;
+      color: #e8edf5;
+    }
+    .hero-card-footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      color: #b9c3d1;
+      font-size: .82rem;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255,255,255,.12);
+    }
+
+    /* General cards */
+    .card-grid { display: grid; gap: 18px; }
+    .skills-grid { grid-template-columns: repeat(4, 1fr); }
+    .services-grid { grid-template-columns: repeat(3, 1fr); }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 25px;
+      box-shadow: 0 10px 30px rgba(11,18,32,.035);
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+      border-color: #c6d5e8;
+    }
+    .icon {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 13px;
+      background: #eaf2ff;
+      color: var(--primary);
+      font-weight: 800;
+      margin-bottom: 17px;
+    }
+    .card h3 { font-size: 1.05rem; margin-bottom: 8px; }
+    .card p { color: var(--muted); font-size: .9rem; }
+
+    /* About */
+    .about {
+      background: var(--surface);
+      border-block: 1px solid var(--line);
+    }
+    .about-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 70px; align-items: start; }
+    .about-lead { font-size: 1.15rem; color: var(--muted); }
+    .about-copy p + p { margin-top: 17px; }
+    .core-list { display: grid; gap: 12px; margin-top: 26px; }
+    .core-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      font-weight: 600;
+    }
+    .check {
+      width: 24px;
+      height: 24px;
+      flex: 0 0 24px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #eaf2ff;
+      color: var(--primary);
+      font-size: .75rem;
+      margin-top: 2px;
+    }
+
+    /* Timeline */
+    .timeline { position: relative; max-width: 900px; }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 10px;
+      top: 5px;
+      bottom: 5px;
+      width: 2px;
+      background: var(--line);
+    }
+    .timeline-item { position: relative; padding-left: 42px; padding-bottom: 38px; }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-dot {
+      position: absolute;
+      left: 0;
+      top: 5px;
+      width: 22px;
+      height: 22px;
+      border: 5px solid var(--bg);
+      border-radius: 50%;
+      background: var(--primary);
+      box-shadow: 0 0 0 1px #c9d6e5;
+    }
+    .timeline-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 24px;
+    }
+    .timeline-card h3 { font-size: 1.2rem; }
+    .meta { color: var(--primary); font-size: .85rem; font-weight: 700; margin: 6px 0 12px; }
+    .timeline-card p { color: var(--muted); }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
+    .tag {
+      background: var(--surface-2);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: .75rem;
+      color: #344154;
+      font-weight: 600;
+    }
+
+    /* Certifications */
+    .cert-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .cert-card { position: relative; overflow: hidden; }
+    .cert-card::after {
+      content: "";
+      position: absolute;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      border: 18px solid rgba(23,105,224,.05);
+      right: -35px;
+      top: -35px;
+    }
+    .cert-provider { font-size: .78rem; color: var(--primary); font-weight: 800; text-transform: uppercase; letter-spacing: .1em; }
+    .cert-card h3 { margin: 9px 0 12px; font-size: 1.25rem; }
+    .credential { margin-top: 18px; font-size: .8rem; color: var(--muted); }
+    .cert-description { color: var(--muted); font-size: .9rem; }
+
+    /* Additional */
+    .app-section {
+      background: var(--navy);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .app-section::before {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.08);
+      right: -150px;
+      top: -150px;
+    }
+    .app-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .app-section .eyebrow { color: #8ebcff; }
+    .app-section .eyebrow::before { background: #8ebcff; }
+    .app-section p { color: #b8c2d0; }
+    .app-points { display: grid; gap: 14px; margin-top: 25px; }
+    .app-point {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 600;
+    }
+    .code-card {
+      background: #111a2a;
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.22);
+    }
+    .code-top { display: flex; gap: 7px; margin-bottom: 24px; }
+    .code-top i { width: 10px; height: 10px; border-radius: 50%; background: #536073; }
+    .code-line { height: 10px; border-radius: 8px; background: rgba(255,255,255,.09); margin: 13px 0; }
+    .code-line.short { width: 55%; }
+    .code-line.mid { width: 75%; }
+    .code-line.blue { width: 45%; background: rgba(84,153,255,.55); }
+
+    /* Contact */
+    .contact-box {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      padding: 50px;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 50px;
+      box-shadow: var(--shadow);
+    }
+    .contact-box h2 { max-width: 650px; }
+    .contact-box > div > p { color: var(--muted); margin: 17px 0 25px; }
+    .contact-links { display: grid; gap: 12px; }
+    .contact-link {
+      padding: 15px 17px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: var(--bg);
+      font-weight: 600;
+      word-break: break-word;
+      transition: border-color .2s ease, transform .2s ease;
+    }
+    .contact-link:hover { border-color: #b7c9df; transform: translateX(3px); }
+    .contact-link small { display: block; color: var(--muted); font-size: .72rem; font-weight: 600; margin-bottom: 2px; }
+
+    /* Footer */
+    footer {
+      background: var(--navy);
+      color: #fff;
+      padding: 30px 0;
+    }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .footer-note { color: #9ca8b8; font-size: .82rem; }
+    .footer-links { display: flex; gap: 20px; color: #c5cedb; font-size: .85rem; }
+    .footer-links a:hover { color: #fff; }
+
+    /* Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 980px) {
+      .hero-grid, .about-grid, .app-grid, .contact-box { grid-template-columns: 1fr; }
+      .hero-grid { gap: 45px; }
+      .skills-grid { grid-template-columns: repeat(3, 1fr); }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .cert-grid { grid-template-columns: 1fr; }
+      .contact-box { padding: 35px; }
+    }
+
+    @media (max-width: 760px) {
+      .container { width: min(var(--max), calc(100% - 28px)); }
+      .section { padding: 75px 0; }
+      .nav-links {
+        position: absolute;
+        left: 14px;
+        right: 14px;
+        top: 68px;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: #fff;
+        padding: 10px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        box-shadow: var(--shadow);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { display: block; padding: 12px 13px; }
+      .nav-cta { text-align: center; margin-top: 5px; }
+      .menu-btn { display: block; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .services-grid { grid-template-columns: 1fr; }
+      .hero { min-height: auto; padding-top: 130px; }
+      .hero-card { transform: none; }
+      .hero-card-inner { min-height: 300px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (max-width: 470px) {
+      .skills-grid { grid-template-columns: 1fr; }
+      .actions { flex-direction: column; }
+      .btn { width: 100%; }
+      .hero h1 { font-size: 3rem; }
+      .contact-box { padding: 26px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="nav-wrap" id="navbar">
+    <div class="container">
+      <nav>
+        <a href="#home" class="logo">HUNAINA<span>.</span></a>
+
+        <button class="menu-btn" id="menuBtn" aria-label="Open navigation menu" aria-expanded="false">☰</button>
+
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#certifications">Certifications</a></li>
+          <li><a href="#contact" class="nav-cta">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="reveal">
+          <div class="availability"><span class="dot"></span> Digital Marketing & Web Development</div>
+          <h1>Hunaina <span>Shamim</span></h1>
+          <p class="hero-subtitle">
+            <strong>Digital Marketer & Web Developer</strong><br>
+            Helping brands grow through digital marketing, web solutions, and data-driven strategies.
+          </p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#services">View My Services →</a>
+            <a class="btn btn-dark" href="#contact">Contact Me</a>
+            <a class="btn btn-light" href="https://www.linkedin.com/in/hunainashamim" target="_blank" rel="noopener">LinkedIn ↗</a>
+          </div>
+        </div>
+
+        <div class="hero-card reveal">
+          <div class="hero-card-inner">
+            <div>
+              <div class="mini-label">What I work with</div>
+              <h3>Strategy + Creativity + Technology</h3>
+              <div class="skill-orbit">
+                <span>SEO</span>
+                <span>Meta Ads</span>
+                <span>Google Ads</span>
+                <span>WordPress</span>
+                <span>Shopify</span>
+                <span>Email Marketing</span>
+                <span>Lead Generation</span>
+                <span>Flutter</span>
+                <span>Dart</span>
+              </div>
+            </div>
+            <div class="hero-card-footer">
+              <span>Digital Marketing</span>
+              <span>Web Development</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section about" id="about">
+      <div class="container about-grid">
+        <div class="section-head reveal">
+          <div class="eyebrow">About Me</div>
+          <h2>Focused on meaningful work and measurable progress.</h2>
+        </div>
+
+        <div class="about-copy reveal">
+          <p class="about-lead">
+            I am a results-oriented professional who is passionate about achieving meaningful outcomes and making positive changes.
+            I can adapt to different environments and bring a mix of strategic thinking and practical execution to every project I undertake.
+          </p>
+          <div class="core-list">
+            <div class="core-item"><span class="check">✓</span><span>Strategic Planning and Execution</span></div>
+            <div class="core-item"><span class="check">✓</span><span>Project Management and Process Improvement</span></div>
+            <div class="core-item"><span class="check">✓</span><span>Digital Tools and Technology Use</span></div>
+            <div class="core-item"><span class="check">✓</span><span>Data-Driven Decision Making and Analytics</span></div>
+            <div class="core-item"><span class="check">✓</span><span>Communication, Problem Solving, and Change Management</span></div>
+          </div>
+          <p style="margin-top:24px;">
+            I excel in team environments where I can share ideas, simplify processes, and produce measurable results.
+            My work is driven by a commitment to quality, ongoing learning, and innovation.
+          </p>
+          <p>
+            I am dedicated, proactive, and motivated. I strive to create value through meaningful work and contribute to the growth and success of any organization I am part of.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">Skills</div>
+          <h2>A versatile digital toolkit.</h2>
+          <p>Marketing, web development, analytics, and professional capabilities that support practical execution.</p>
+        </div>
+
+        <div class="card-grid skills-grid">
+          <div class="card reveal"><div class="icon">SM</div><h3>Social Media Marketing</h3><p>Social media planning, content and brand presence.</p></div>
+          <div class="card reveal"><div class="icon">FA</div><h3>Facebook Ads</h3><p>Paid social advertising and campaign execution.</p></div>
+          <div class="card reveal"><div class="icon">GA</div><h3>Google Ads</h3><p>Search and digital advertising fundamentals.</p></div>
+          <div class="card reveal"><div class="icon">SE</div><h3>SEO</h3><p>Search optimization and organic growth practices.</p></div>
+          <div class="card reveal"><div class="icon">SH</div><h3>Shopify</h3><p>Shopify store creation and setup.</p></div>
+          <div class="card reveal"><div class="icon">WP</div><h3>WordPress</h3><p>WordPress design, development and web solutions.</p></div>
+          <div class="card reveal"><div class="icon">EM</div><h3>Email Marketing</h3><p>Email campaigns and customer communication.</p></div>
+          <div class="card reveal"><div class="icon">LG</div><h3>Lead Generation</h3><p>Digital approaches for attracting potential customers.</p></div>
+          <div class="card reveal"><div class="icon">BM</div><h3>Brand Marketing</h3><p>Brand positioning and digital presence.</p></div>
+          <div class="card reveal"><div class="icon">MS</div><h3>Marketing Strategy</h3><p>Planning and execution aligned with business goals.</p></div>
+          <div class="card reveal"><div class="icon">AN</div><h3>Analytics</h3><p>Data-informed thinking and performance analysis.</p></div>
+          <div class="card reveal"><div class="icon">FT</div><h3>Flutter & Dart</h3><p>Mobile app development fundamentals.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section about" id="services">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">Services</div>
+          <h2>Digital solutions built around growth.</h2>
+          <p>Services I can support across marketing, branding, advertising, and web presence.</p>
+        </div>
+
+        <div class="card-grid services-grid">
+          <div class="card reveal"><div class="icon">01</div><h3>Lead Generation</h3><p>Build digital approaches focused on attracting and nurturing potential customers.</p></div>
+          <div class="card reveal"><div class="icon">02</div><h3>Brand Marketing</h3><p>Strengthen brand presence and communicate a clear digital identity.</p></div>
+          <div class="card reveal"><div class="icon">03</div><h3>Email Marketing</h3><p>Create structured email marketing initiatives for audience communication.</p></div>
+          <div class="card reveal"><div class="icon">04</div><h3>Search Engine Optimization</h3><p>Improve search visibility through practical SEO strategies.</p></div>
+          <div class="card reveal"><div class="icon">05</div><h3>Social Media Marketing</h3><p>Plan and manage social media activities that support brand goals.</p></div>
+          <div class="card reveal"><div class="icon">06</div><h3>Marketing Strategy</h3><p>Turn goals into practical digital marketing plans and actions.</p></div>
+          <div class="card reveal"><div class="icon">07</div><h3>Digital Marketing</h3><p>Support businesses across multiple digital marketing channels.</p></div>
+          <div class="card reveal"><div class="icon">08</div><h3>Training</h3><p>Share practical knowledge around digital marketing and digital tools.</p></div>
+          <div class="card reveal"><div class="icon">09</div><h3>WordPress Design</h3><p>Create and improve WordPress-based web experiences.</p></div>
+          <div class="card reveal"><div class="icon">10</div><h3>Advertising</h3><p>Support paid advertising initiatives across digital platforms.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section" id="experience">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">Experience</div>
+          <h2>Professional experience.</h2>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item reveal">
+            <span class="timeline-dot"></span>
+            <div class="timeline-card">
+              <h3>Social Media Marketing Manager</h3>
+              <div class="meta">ACE FACILITY MANAGEMENTS · 2026 – Present · Remote</div>
+              <p>Social Media Management.</p>
+              <div class="tag-row"><span class="tag">Social Media Marketing</span><span class="tag">Social Media Management</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section class="section about" id="education">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">Education</div>
+          <h2>Education & learning.</h2>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item reveal">
+            <span class="timeline-dot"></span>
+            <div class="timeline-card">
+              <h3>Diploma in Digital Marketing</h3>
+              <div class="meta">Aptech Pakistan · Aug 2025 – Present</div>
+              <div class="tag-row"><span class="tag">Social Media Marketing</span><span class="tag">Shopify</span><span class="tag">Digital Marketing</span></div>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal">
+            <span class="timeline-dot"></span>
+            <div class="timeline-card">
+              <h3>Intermediate – General Science</h3>
+              <div class="meta">Govt Degree College SRE MAJEED, Stadium Road · Aug 2023 – May 2025</div>
+              <div class="tag-row"><span class="tag">Time Management</span></div>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal">
+            <span class="timeline-dot"></span>
+            <div class="timeline-card">
+              <h3>Matriculation – Sciences</h3>
+              <div class="meta">Little Genius · 2021 – 2023</div>
+              <div class="tag-row"><span class="tag">Grade A</span></div>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal">
+            <span class="timeline-dot"></span>
+            <div class="timeline-card">
+              <h3>Intermediate – Computer Science</h3>
+              <div class="meta">Govt Degree College Stadium Road SRE MAJEED · 2023 – 2025</div>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal">
+            <span class="timeline-dot"></span>
+            <div class="timeline-card">
+              <h3>Diploma in Digital Media – Digital Marketing</h3>
+              <div class="meta">Aptech Learning · 2025 – 2026</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section class="section" id="certifications">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">Licenses & Certifications</div>
+          <h2>Continuous learning, backed by certifications.</h2>
+        </div>
+
+        <div class="cert-grid">
+          <article class="card cert-card reveal">
+            <div class="cert-provider">Meta</div>
+            <h3>Build an Online Presence with a Facebook Page</h3>
+            <p class="cert-description">
+              Completed the course by Meta and learned how to create and manage a Facebook Page to establish a business’s online presence,
+              share engaging content, and connect with customers. Gained practical skills in Meta Business Suite, content strategy,
+              and growing brand awareness through social media.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Meta Business Suite</span>
+              <span class="tag">Facebook Page</span>
+              <span class="tag">Facebook Page Management</span>
+            </div>
+       
+          </article>
+
+          <article class="card cert-card reveal">
+            <div class="cert-provider">Meta</div>
+            <h3>Getting Started with Meta Technologies</h3>
+            <p class="cert-description">
+              Completed the course by Meta and gained foundational knowledge of Meta’s platforms including Facebook, Instagram,
+              and WhatsApp, with an understanding of how businesses use these platforms for marketing and online presence.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Facebook for Business</span>
+              <span class="tag">Facebook Page Management</span>
+              <span class="tag">Meta Technologies</span>
+            </div>
+            
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADDITIONAL EDUCATION / MOBILE -->
+    <section class="section app-section" id="mobile">
+      <div class="container app-grid">
+        <div class="reveal">
+          <div class="eyebrow">Additional Skills</div>
+          <h2>Mobile App Development</h2>
+          <p style="margin-top:18px;">
+            Completed Mobile App Developer training through Aptech Pakistan, building foundational knowledge in Dart and Flutter.
+          </p>
+          <div class="app-points">
+            <div class="app-point"><span class="check">✓</span><span>Dart</span></div>
+            <div class="app-point"><span class="check">✓</span><span>Flutter</span></div>
+            <div class="app-point"><span class="check">✓</span><span>Mobile App Development</span></div>
+          </div>
+          <p style="margin-top:22px; font-size:.88rem;">Aptech Pakistan · Feb 2026 – May 2026</p>
+        </div>
+
+        <div class="code-card reveal" aria-hidden="true">
+          <div class="code-top"><i></i><i></i><i></i></div>
+          <div class="code-line blue"></div>
+          <div class="code-line mid"></div>
+          <div class="code-line short"></div>
+          <div class="code-line mid"></div>
+          <div class="code-line blue"></div>
+          <div class="code-line short"></div>
+          <div class="code-line mid"></div>
+          <div class="code-line short"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS PLACEHOLDER -->
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">Projects</div>
+          <h2>Projects coming soon.</h2>
+          <p>This section is intentionally kept as a placeholder until real projects can be added.</p>
+        </div>
+        <div class="card reveal" style="text-align:center; padding:45px;">
+          <div class="icon" style="margin:0 auto 17px;">+</div>
+          <h3>Your projects can go here.</h3>
+          <p style="max-width:650px; margin:8px auto 0;">
+            Add genuine projects, case studies, screenshots, links, responsibilities, and measurable outcomes when available.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section about" id="contact">
+      <div class="container">
+        <div class="contact-box reveal">
+          <div>
+            <div class="eyebrow">Contact</div>
+            <h2>Let’s connect and build something meaningful.</h2>
+            <p>
+              Whether you want to discuss digital marketing, web development, collaboration, or an opportunity,
+              you can reach me through the links below.
+            </p>
+            <div class="actions">
+              <a class="btn btn-primary" href="https://mail.google.com/mail/?view=cm&fs=1&to=hunainashamim@gmail.com" target="_blank" rel="noopener">Email Me</a>
+              <a class="btn btn-dark" href="https://www.linkedin.com/in/hunainashamim" target="_blank" rel="noopener">Connect on LinkedIn</a>
+            </div>
+          </div>
+
+          <div class="contact-links">
+            <!-- REPLACE EMAIL HERE -->
+            <a class="contact-link" href="https://mail.google.com/mail/?view=cm&fs=1&to=hunainashamim@gmail.com" target="_blank" rel="noopener">
+              <small>Email</small>
+              xyz@example.com
+            </a>
+            <a class="contact-link" href="https://www.linkedin.com/in/hunainashamim" target="_blank" rel="noopener">
+              <small>LinkedIn</small>
+              linkedin.com/in/hunainashamim
+            </a>
+           
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>
+        <div class="logo">HUNAINA<span>.</span></div>
+        <div class="footer-note">Digital Marketer & Web Developer</div>
+      </div>
+      <div class="footer-links">
+        <a href="#home">Back to top ↑</a>
+        <a href="https://www.linkedin.com/in/hunainashamim" target="_blank" rel="noopener">LinkedIn</a>
+        
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile navigation
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", () => {
+      const open = navLinks.classList.toggle("open");
+      menuBtn.setAttribute("aria-expanded", open);
+      menuBtn.textContent = open ? "✕" : "☰";
+    });
+
+    document.querySelectorAll("#navLinks a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuBtn.setAttribute("aria-expanded", "false");
+        menuBtn.textContent = "☰";
+      });
+    });
+
+    // Sticky navigation effect
+    const navbar = document.getElementById("navbar");
+    window.addEventListener("scroll", () => {
+      navbar.classList.toggle("scrolled", window.scrollY > 30);
+    });
+
+    // Subtle reveal animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
